@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.CarReturnDao">
+    <resultMap id="CarReturnEntityMap" type="com.rabbiter.vlm.entity.CarReturnEntity">
+        <id column="id" property="id"/>
+        <result column="car_name" property="carName"/>
+        <result column="car_type" property="carType"/>
+        <result column="brand" property="brand"/>
+        <result column="license_plate_number" property="licensePlateNumber"/>
+        <result column="return_time" property="returnTime"/>
+        <result column="return_content" property="returnContent"/>
+        <result column="username" property="username"/>
+        <result column="real_name" property="realName"/>
+        <result column="mobile_phone" property="mobilePhone"/>
+        <result column="is_reviewed" property="isReviewed"/>
+        <result column="review_response" property="reviewResponse"/>
+        <result column="add_time" property="addTime"/>
+    </resultMap>
+    <select id="selectListVO"
+            resultType="com.rabbiter.vlm.entity.vo.CarReturnVO">
+        SELECT * FROM car_return car_return
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectVO"
+            resultType="com.rabbiter.vlm.entity.vo.CarReturnVO">
+        SELECT car_return.* FROM car_return car_return
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectListView"
+            resultMap="CarReturnEntityMap">
+
+        SELECT * FROM car_return
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectView"
+            resultMap="CarReturnEntityMap">
+        SELECT * FROM car_return
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+</mapper>

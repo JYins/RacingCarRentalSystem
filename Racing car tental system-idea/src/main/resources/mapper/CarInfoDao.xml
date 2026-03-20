@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.CarInfoDao">
+	<!-- CarInfoEntity的resultMap -->
+	<resultMap id="CarInfoEntityMap" type="com.rabbiter.vlm.entity.CarInfoEntity">
+		<id column="id" property="id" />
+		<result column="car_name" property="carName" />
+		<result column="car_type" property="carType" />
+		<result column="brand" property="brand" />
+		<result column="body_color" property="bodyColor" />
+		<result column="seating_capacity" property="seatingCapacity" />
+		<result column="license_plate_number" property="licensePlateNumber" />
+		<result column="content" property="content" />
+		<result column="add_time" property="addTime" />
+	</resultMap>
+
+	<select id="selectListVO"
+		resultType="com.rabbiter.vlm.entity.vo.CarInfoVO" >
+		SELECT * FROM car_info  car_info
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectVO"
+		resultType="com.rabbiter.vlm.entity.vo.CarInfoVO" >
+		SELECT  car_info.* FROM car_info  car_info
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultMap="CarInfoEntityMap" >
+
+		SELECT  * FROM car_info
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectView" resultMap="CarInfoEntityMap" >
+		SELECT * FROM car_info <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+</mapper>

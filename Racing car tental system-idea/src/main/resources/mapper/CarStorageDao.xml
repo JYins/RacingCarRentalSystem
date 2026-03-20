@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.CarStorageDao">
+	<!-- CarStorageEntity的resultMap -->
+	<resultMap id="CarStorageEntityMap" type="com.rabbiter.vlm.entity.CarStorageEntity">
+		<id column="id" property="id" />
+		<result column="car_name" property="carName" />
+		<result column="car_type" property="carType" />
+		<result column="brand" property="brand" />
+		<result column="license_plate_number" property="licensePlateNumber" />
+		<result column="recovery_location" property="recoveryLocation" />
+		<result column="recovery_time" property="recoveryTime" />
+		<result column="add_time" property="addTime" />
+	</resultMap>
+
+	<select id="selectListVO"
+		resultType="com.rabbiter.vlm.entity.vo.CarStorageVO" >
+		SELECT * FROM car_storage car_storage
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectVO"
+		resultType="com.rabbiter.vlm.entity.vo.CarStorageVO" >
+		SELECT  car_storage.* FROM car_storage car_storage
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+			resultMap="CarStorageEntityMap" >
+
+		SELECT  * FROM car_storage
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectView"
+		resultMap="CarStorageEntityMap" >
+		SELECT * FROM car_storage <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.DispenseAreaDao">
+	<resultMap id="DispenseAreaEntityMap" type="com.rabbiter.vlm.entity.DispenseAreaEntity">
+		<id column="id" property="id" />
+		<result column="area" property="area" />
+		<result column="add_time" property="addTime" />
+	</resultMap>
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.rabbiter.vlm.entity.DispenseAreaEntity" id="toufangdiquMap">
+        <result property="area" column="area"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.rabbiter.vlm.entity.vo.DispenseAreaVO" >
+		SELECT * FROM dispense_area dispense_area
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectVO"
+		resultType="com.rabbiter.vlm.entity.vo.DispenseAreaVO" >
+		SELECT  dispense_area.* FROM dispense_area dispense_area
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultMap="DispenseAreaEntityMap" >
+
+		SELECT * FROM dispense_area
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectView"
+		resultMap="DispenseAreaEntityMap" >
+		SELECT * FROM dispense_area <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+</mapper>

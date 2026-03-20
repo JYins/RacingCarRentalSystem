@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.TokenDao">
+	<resultMap id="TokenEntityMap" type="com.rabbiter.vlm.entity.TokenEntity">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="username" property="username" />
+		<result column="table_name" property="tableName" />
+		<result column="role" property="role" />
+		<result column="token" property="token" />
+		<result column="expiration_time" property="expirationTime" />
+		<result column="add_time" property="addTime" />
+	</resultMap>
+
+    <select id="selectListView"
+		resultMap="TokenEntityMap" >
+
+		SELECT  * FROM `token`
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+</mapper>

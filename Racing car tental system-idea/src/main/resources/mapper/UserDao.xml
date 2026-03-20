@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.UserDao">
+	<resultMap id="UserEntityMap" type="com.rabbiter.vlm.entity.UserEntity">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="real_name" property="realName" />
+		<result column="gender" property="gender" />
+		<result column="birthday" property="birthday" />
+		<result column="identification_number" property="identificationNumber" />
+		<result column="mobile_phone" property="mobilePhone" />
+		<result column="photo" property="photo" />
+		<result column="add_time" property="addTime" />
+		<result column="is_reviewed" property="isReviewed" />
+		<result column="review_response" property="reviewResponse" />
+	</resultMap>
+
+	<select id="selectListVO"
+		resultType="com.rabbiter.vlm.entity.vo.UserVO" >
+		SELECT * FROM user
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectVO"
+		resultType="com.rabbiter.vlm.entity.vo.UserVO" >
+		SELECT  user.* FROM user user
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultMap="UserEntityMap" >
+
+		SELECT  * FROM `user`
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectView"
+		resultMap="UserEntityMap" >
+		SELECT * FROM `user` <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+</mapper>

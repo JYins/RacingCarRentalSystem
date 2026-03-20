@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.vlm.dao.CarDispenseDao">
+    <resultMap id="CarDispenseEntityMap" type="com.rabbiter.vlm.entity.CarDispenseEntity">
+        <id column="id" property="id"/>
+        <result column="car_name" property="carName"/>
+        <result column="car_type" property="carType"/>
+        <result column="brand" property="brand"/>
+        <result column="license_plate_number" property="licensePlateNumber"/>
+        <result column="body_color" property="bodyColor"/>
+        <result column="seating_capacity" property="seatingCapacity"/>
+        <result column="hourly_price" property="hourlyPrice"/>
+        <result column="dispense_region" property="dispenseRegion"/>
+        <result column="dispense_location" property="dispenseLocation"/>
+        <result column="dispense_time" property="dispenseTime"/>
+        <result column="car_condition" property="carCondition"/>
+        <result column="add_time" property="addTime"/>
+    </resultMap>
+
+    <select id="selectListVO"
+            resultType="com.rabbiter.vlm.entity.vo.CarDispenseVO">
+        SELECT * FROM car_dispense car_dispense
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectVO"
+            resultType="com.rabbiter.vlm.entity.vo.CarDispenseVO">
+        SELECT car_dispense.* FROM car_dispense car_dispense
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectListView"
+            resultMap="CarDispenseEntityMap">
+
+        SELECT * FROM car_dispense
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+    <select id="selectView"
+            resultMap="CarDispenseEntityMap">
+        SELECT * FROM car_dispense
+        <where>1=1 ${ew.sqlSegment}</where>
+    </select>
+
+</mapper>
